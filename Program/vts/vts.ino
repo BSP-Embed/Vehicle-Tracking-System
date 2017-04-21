@@ -9,16 +9,8 @@ LiquidCrystal lcd(8,9,10,11,12,13);
 SoftwareSerial GPS(5,6);
 TinyGPS gps;
 
-#define TESTING
-//#define DEMO
+#define PHNUM1          "YOUR_PHNUMBER"
 
-#ifdef TESTING
-  #define PHNUM1          "9980237552"
-  #define PHNUM2          "9980237552"
-#else
-  #define PHNUM1          "9632166279"
-  #define PHNUM2          "9632839510"
-#endif
 
 #define interval          1000
 #define MQ7_CONST         0.02f
@@ -148,7 +140,7 @@ void TaskMsg(void) {
       lcd.setCursor(0,1);
       lcd.print(SMS);
     #endif
-    if (!strcmp(PHNUM1, PhNum) || !strcmp(PHNUM2, PhNum)) {
+    if (!strcmp(PHNUM1, PhNum)) {
       Beep();
       SendLinkLoc(PhNum, SMSMsg[2]);
     }
